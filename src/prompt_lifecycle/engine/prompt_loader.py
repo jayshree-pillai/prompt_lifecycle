@@ -4,85 +4,72 @@ from typing import Any, Dict, List, Tuple
 
 class PromptLoader:
     """
-    Loads prompt templates from disk, renders variables, and assembles the final prompt.
+    Reads prompt templates from disk and stitches them into one final prompt.
 
-    Input contract (prompt_spec) expected from Router:
-      {
-        "manifest": {...},
-        "segments": [
-          {"name": str, "template_path": str, "variables": dict},
-          ...
-        ]
-      }
+    Router hands us a list of segments like:
+      [{"name": "...", "template_path": "...", "variables": {...}}, ...]
 
-    Output contract:
-      (assembled_prompt_text, assembly_manifest)
-
-    Where assembly_manifest includes:
-      - router_manifest (industry, kpi_pack, version, etc.)
-      - ordered list of segments with resolved absolute/relative paths
+    We return:
+      (assembled_prompt_text, manifest)
     """
 
     def __init__(self, config: Dict[str, Any]):
-        prompts_cfg = config.get("prompts", {})
+        prompts_cfg = config.get("prompts", {}) or {}
         self.base_dir = prompts_cfg.get("base_dir", "config/prompts")
 
-    def _resolve_path(self, template_path: str) -> str:
-        if os.path.isabs(template_path):
-            return template_path
-        return os.path.join(self.base_dir, template_path)
+    def _resolve(self, template_path: str) -> str:
+        return template_path if os.path.isabs(template_path) else os.path.join(self.base_dir, template_path)
 
-    def _render_template(self, resolved_path: str, variables: Dict[str, Any]) -> str:
-        with open(resolved_path, "r", encoding="utf-8") as f:
-            template = f.read()
+    def _read(self, path: str) -> str:
+        with open(path, "r", encoding="utf-8") as f:
+            return f.read()
 
+    def _render(self, template_text: str, variables: Dict[str, Any], resolved_path: str) -> str:
         try:
-            return template.format(**variables)
+            return template_text.format(**variables)
         except KeyError as exc:
-            # KeyError prints like: KeyError('company_name')
             missing = str(exc).strip("'")
-            raise KeyError(
-                f"Missing variable '{missing}' for template: {resolved_path}"
-            )
+            raise KeyError(f"Template is missing variable '{missing}': {resolved_path}") from None
 
     def load(self, prompt_spec: Dict[str, Any]) -> Tuple[str, Dict[str, Any]]:
-        segments: List[Dict[str, Any]] = prompt_spec.get("segments", [])
+        segments: List[Dict[str, Any]] = prompt_spec.get("segments", []) or []
         if not segments:
-            raise ValueError("prompt_spec must include non-empty 'segments'")
+            raise ValueError("prompt_spec.segments is required and cannot be empty")
 
-        router_manifest = prompt_spec.get("manifest", {})
+        router_manifest = prompt_spec.get("manifest", {}) or {}
 
         rendered_parts: List[str] = []
-        segment_manifest: List[Dict[str, Any]] = []
+        seg_manifest: List[Dict[str, Any]] = []
 
         for seg in segments:
-            name = seg.get("name", "unnamed")
+            name = seg.get("name") or "unnamed"
             template_path = seg.get("template_path")
             if not template_path:
-                raise ValueError(f"Segment '{name}' is missing 'template_path'")
+                raise ValueError(f"Segment '{name}' is missing template_path")
 
-            variables = seg.get("variables", {})
+            variables = seg.get("variables", {}) or {}
 
-            resolved = self._resolve_path(template_path)
-            text = self._render_template(resolved, variables)
+            resolved_path = self._resolve(template_path)
+            template_text = self._read(resolved_path)
+            text = self._render(template_text, variables, resolved_path)
 
             rendered_parts.append(text)
-            segment_manifest.append(
+            seg_manifest.append(
                 {
                     "name": name,
                     "template_path": template_path,
-                    "resolved_path": resolved,
-                    "variables_keys": sorted(list(variables.keys())),
+                    "resolved_path": resolved_path,
+                    "variables_keys": sorted(variables.keys()),
                     "chars": len(text),
                 }
             )
 
         assembled = "\n\n".join(rendered_parts)
 
-        assembly_manifest = {
+        manifest = {
             "router_manifest": router_manifest,
-            "segments": segment_manifest,
+            "segments": seg_manifest,
             "assembled_chars": len(assembled),
         }
 
-        return assembled, assembly_manifest
+        return assembled, manifest

@@ -1,52 +1,58 @@
 import argparse
 import json
+
 from prompt_lifecycle.engine.runtime import Runtime
 
 
-def parse_args():
+def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Prompt Lifecycle CLI")
 
     parser.add_argument(
         "--config",
-        type=str,
         required=True,
-        help="Path to YAML config for this run",
+        help="Path to the run-config YAML (e.g., src/prompt_lifecycle/config/company_overview.yaml)",
     )
-
     parser.add_argument(
         "--section",
-        type=str,
         required=True,
-        help="Which report section to generate (e.g., company_overview)",
+        help="Section key under config.sections (e.g., company_overview)",
     )
 
-    parser.add_argument("--industry", type=str, required=False, help="Override industry (e.g., ENERGY)")
-    parser.add_argument("--sub-industry", dest="sub_industry", type=str, required=False,
-                        help="Override sub-industry (e.g., 4.1 Upstream/Services)")
-    parser.add_argument("--prompt-version", dest="prompt_version", type=str, required=False,
-                        help="Override prompt version key (e.g., v2025_01_10)")
-    parser.add_argument("--kpi-pack", dest="kpi_pack", type=str, required=False,
-                        help="Override KPI pack id directly (e.g., ENERGY__Upstream_Services)")
+    # Optional runtime overrides (lets you experiment without editing YAML)
+    parser.add_argument("--industry", help="Override industry (e.g., ENERGY)")
+    parser.add_argument(
+        "--sub-industry",
+        dest="sub_industry",
+        help="Override sub-industry (e.g., 4.1 Upstream/Services)",
+    )
+    parser.add_argument(
+        "--prompt-version",
+        dest="prompt_version",
+        help="Override prompt version key (e.g., v2025_01_10)",
+    )
+    parser.add_argument(
+        "--kpi-pack",
+        dest="kpi_pack",
+        help="Override KPI pack id directly (e.g., ENERGY__Upstream_Services)",
+    )
 
+    # Output modes
     parser.add_argument(
         "--prompt-only",
         action="store_true",
-        help="Print only the assembled prompt text (no manifest, no output wrapper).",
+        help="Print only the assembled prompt text.",
     )
-
     parser.add_argument(
         "--manifest-only",
         action="store_true",
-        help="Print only the prompt manifest JSON (no prompt text).",
+        help="Print only the assembly manifest (JSON).",
     )
 
-    return parser.parse_args()
+    return parser
 
 
-def main():
-    args = parse_args()
-
-    overrides = {
+def collect_overrides(args: argparse.Namespace) -> dict:
+    return {
         "section": args.section,
         "industry": args.industry,
         "sub_industry": args.sub_industry,
@@ -54,25 +60,25 @@ def main():
         "kpi_pack": args.kpi_pack,
     }
 
-    # --- CHANGED: pass overrides into Runtime ---
-    runtime = Runtime(config_path=args.config, overrides=overrides)
 
-    # If you want prompt-only or manifest-only, we bypass the pretty wrapper
+def main() -> None:
+    args = build_parser().parse_args()
+
+    runtime = Runtime(config_path=args.config, overrides=collect_overrides(args))
+
+    # Lightweight modes for debugging / inspection
     if args.prompt_only or args.manifest_only:
         prompt_spec = runtime.router.route(args.section)
-        assembled_prompt, assembly_manifest = runtime.prompt_loader.load(prompt_spec)
+        prompt_text, manifest = runtime.prompt_loader.load(prompt_spec)
 
         if args.manifest_only:
-            print(json.dumps(assembly_manifest, indent=2))
-            return
-
-        # prompt_only
-        print(assembled_prompt)
+            print(json.dumps(manifest, indent=2))
+        else:
+            print(prompt_text)
         return
 
-    # Default: full output (manifest + prompt + stub output)
-    result = runtime.run(section=args.section)
-    print(result)
+    # Default: full run (includes stub LLM output)
+    print(runtime.run(section=args.section))
 
 
 if __name__ == "__main__":

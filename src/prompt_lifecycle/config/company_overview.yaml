@@ -1,41 +1,24 @@
-# This is the "run config" you pass via --config
-
+# Run-config passed to the CLI via --config
 prompts:
-  # Path is relative to where you run the CLI from.
-  # If you run from repo root and your prompts live at src/prompt_lifecycle/prompts,
-  # keep it exactly like this.
-  base_dir: "src/prompt_lifecycle/prompts"
+  base_dir: src/prompt_lifecycle/prompts
 
-# Optional base header prompt (recommended)
 base_prompt:
-  template_path: "base_system.md"
+  template_path: base_system.md
 
-# Where the Router should find the industry → KPI-pack mapping
-industry_map_file: "industry_map.yaml"
+industry_map_file: industry_map.yaml
+kpi_packs_file: kpi_packs.yaml
 
-# Where the Router should find the KPI pack definitions
-kpi_packs_file: "kpi_packs.yaml"
-
-# KPI pack -> prompt snippet template (you decided KISS: keep under prompts/)
 kpi_pack_prompt:
-  template_path: "kpi_pack.md"
-
-# (Optional) industry-specific prompt blocks (only if you want them)
-# industries:
-#   ENERGY:
-#     template_path: "industries/energy.md"
+  template_path: kpi_pack.md
 
 sections:
   company_overview:
-    industry: "ENERGY"
-    sub_industry: "Commodity Traders"
+    industry: ENERGY
+    sub_industry: Commodity Traders
 
-    # ✅ pick one of your existing versions
-    prompt_version: "v2025_02_15"
-
-    # ✅ map versions → your existing md files
+    prompt_version: v2025_02_15
     prompt_versions:
       v2025_01_10:
-        template_path: "company_overview/prompt_v2025_01_10.md"
+        template_path: company_overview/prompt_v2025_01_10.md
       v2025_02_15:
-        template_path: "company_overview/prompt_v2025_02_15.md"
+        template_path: company_overview/prompt_v2025_02_15.md
