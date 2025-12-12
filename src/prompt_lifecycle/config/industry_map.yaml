@@ -1,0 +1,157 @@
+version: "1.0"
+description: "Maps (industry, sub_industry) to KPI pack IDs. Used by Router to auto-select KPI pack."
+
+industry_aliases:
+  "1 AUTOS": "AUTOS"
+  "2 BASIC MATERIALS": "BASIC MATERIALS"
+  "3 CONSUMER": "CONSUMER"
+  "4 ENERGY": "ENERGY"
+  "5 FINANCIAL INSTITUTIONS": "FINANCIAL INSTITUTIONS"
+  "6 HEALTHCARE": "HEALTHCARE"
+  "7 INDUSTRIALS & DIVERSIFIED INDUSTRIES": "INDUSTRIALS & DIVERSIFIED INDUSTRIES"
+  "8 MEDIA / TELECOM": "MEDIA / TELECOM"
+  "9 POWER & UTILITIES": "POWER & UTILITIES"
+  "10 REAL ESTATE": "REAL ESTATE"
+  "11 TECHNOLOGY": "TECHNOLOGY"
+
+industry_map:
+
+  AUTOS:
+    default_kpi_pack: AUTOS__core
+    sub_industries:
+      OEM: AUTOS__OEM
+      Captive Finance: AUTOS__Captive_Finance
+      Auto Parts/Suppliers: AUTOS__Auto_Parts_Suppliers
+      Auto Dealers and Services: AUTOS__Auto_Dealers_and_Services
+      Fleet Services: AUTOS__Fleet_Services
+    sub_industry_aliases:
+      "1.1 OEM": "OEM"
+      "1.2 Captive Finance": "Captive Finance"
+      "1.3 Auto Parts/Suppliers": "Auto Parts/Suppliers"
+      "1.4 Auto Dealers and Services": "Auto Dealers and Services"
+      "1.5 Fleet Services": "Fleet Services"
+
+  BASIC MATERIALS:
+    default_kpi_pack: BASIC_MATERIALS__core
+    sub_industries:
+      Paper & Packaging: BASIC_MATERIALS__Paper_and_Packaging
+      Metals & Mining: BASIC_MATERIALS__Metals_and_Mining
+      Chemicals: BASIC_MATERIALS__Chemicals
+    sub_industry_aliases:
+      "2.1 Paper & Packaging": "Paper & Packaging"
+      "2.2 Metals & Mining": "Metals & Mining"
+      "2.3 Chemicals": "Chemicals"
+
+  CONSUMER:
+    default_kpi_pack: CONSUMER__core
+    sub_industries:
+      "Food, Beverage & Tobacco": CONSUMER__Food_Beverage_and_Tobacco
+      Retail & Apparel: CONSUMER__Retail_and_Apparel
+      Consumer Products: CONSUMER__Consumer_Products
+      "Restaurants, Lodging & Leisure": CONSUMER__Restaurants_Lodging_and_Leisure
+    sub_industry_aliases:
+      "3.1 Food, Beverage & Tobacco": "Food, Beverage & Tobacco"
+      "3.2 Retail & Apparel": "Retail & Apparel"
+      "3.3 Consumer Products": "Consumer Products"
+      "3.4 Restaurants, Lodging & Leisure": "Restaurants, Lodging & Leisure"
+
+  ENERGY:
+    default_kpi_pack: ENERGY__core
+    sub_industries:
+      Upstream/Services: ENERGY__Upstream_Services
+      Midstream/Downstream: ENERGY__Midstream_Downstream
+      Commodity Traders: ENERGY__Commodity_Traders
+    sub_industry_aliases:
+      "4.1 Upstream/Services": "Upstream/Services"
+      "4.2 Midstream/Downstream": "Midstream/Downstream"
+      "4.2 Commodity Traders": "Commodity Traders"
+
+  FINANCIAL INSTITUTIONS:
+    default_kpi_pack: FIN_INST__Banks_and_Depositories
+    sub_industries:
+      Insurance: FIN_INST__Insurance
+      "Banks / Depositories": FIN_INST__Banks_and_Depositories
+      Buy Side Firms: FIN_INST__Buy_Side_Firms
+      Non-Bank Financials: FIN_INST__Non_Bank_Financials
+      Broker Dealers: FIN_INST__Broker_Dealers
+      "CCPs/Exchanges/Fin. Tech.": FIN_INST__CCPs_Exchanges_FinTech
+    sub_industry_aliases:
+      "5.1 Insurance": "Insurance"
+      "5.2 Banks / Depositories": "Banks / Depositories"
+      "5.3 Buy Side Firms": "Buy Side Firms"
+      "5.4 Non-Bank Financials": "Non-Bank Financials"
+      "5.5 Broker Dealers": "Broker Dealers"
+      "5.6 CCPs/Exchanges/Fin. Tech.": "CCPs/Exchanges/Fin. Tech."
+
+  HEALTHCARE:
+    default_kpi_pack: HEALTHCARE__core
+    sub_industries:
+      Drug Manufacturing: HEALTHCARE__Drug_Manufacturing
+      Healthcare Services: HEALTHCARE__Healthcare_Services
+      "Therapeutic Devices / Medtech": HEALTHCARE__Therapeutic_Devices_Medtech
+      "Diagnostics / Life Science Tools": HEALTHCARE__Diagnostics_Life_Science_Tools
+    sub_industry_aliases:
+      "6.1 Drug Manufacturing": "Drug Manufacturing"
+      "6.2 Healthcare Services": "Healthcare Services"
+      "6.3 Therapeutic Devices / Medtech": "Therapeutic Devices / Medtech"
+      "6.4 Diagnostics / Life Science Tools": "Diagnostics / Life Science Tools"
+
+  INDUSTRIALS & DIVERSIFIED INDUSTRIES:
+    default_kpi_pack: IND_DIVERSIFIED__core
+    sub_industries:
+      Diversified Industrials: IND_DIVERSIFIED__Diversified_Industrials
+      Aerospace/Defense: IND_DIVERSIFIED__Aerospace_Defense
+      "Engineering & Construction": IND_DIVERSIFIED__Engineering_Construction
+      Transportation: IND_DIVERSIFIED__Transportation
+      Business Services: IND_DIVERSIFIED__Business_Services
+      "Machinery & Equipment": IND_DIVERSIFIED__Machinery_Equipment
+    sub_industry_aliases:
+      "7.1 Diversified Industrials": "Diversified Industrials"
+      "7.2 Aerospace/Defense": "Aerospace/Defense"
+      "7.3 Engineering & Construction": "Engineering & Construction"
+      "7.4 Transportation": "Transportation"
+      "7.5 Business Services": "Business Services"
+      "7.6 Machinery & Equipment": "Machinery & Equipment"
+
+  MEDIA / TELECOM:
+    default_kpi_pack: MEDIA_TELECOM__Media
+    sub_industries:
+      Media: MEDIA_TELECOM__Media
+      Telecom: MEDIA_TELECOM__Telecom
+      "Entertainment & Leisure": MEDIA_TELECOM__Media
+    sub_industry_aliases:
+      "8.1 Media": "Media"
+      "8.2 Telecom": "Telecom"
+      "8.3 Entertainment & Leisure": "Entertainment & Leisure"
+
+  POWER & UTILITIES:
+    default_kpi_pack: POWER_UTIL__Regulated_Utility
+    sub_industries:
+      Regulated Utility: POWER_UTIL__Regulated_Utility
+      Integrated/Hybrid Utilities: POWER_UTIL__Integrated_Hybrid_Utilities
+      Independent Power Producers: POWER_UTIL__Independent_Power_Producers
+      Renewables: POWER_UTIL__Renewables
+    sub_industry_aliases:
+      "11.1 Regulated Utility": "Regulated Utility"
+      "11.2 Integrated/Hybrid Utilities": "Integrated/Hybrid Utilities"
+      "11.3 Independent Power Producers": "Independent Power Producers"
+      "11.4 Renewables": "Renewables"
+
+  REAL ESTATE:
+    default_kpi_pack: REAL_ESTATE__Commercial_Real_Estate
+    sub_industries:
+      Commercial Real Estate: REAL_ESTATE__Commercial_Real_Estate
+      Residential Real Estate: REAL_ESTATE__Residential_Real_Estate
+    sub_industry_aliases:
+      "12.1 Commercial Real Estate": "Commercial Real Estate"
+      "12.2 Residential Real Estate": "Residential Real Estate"
+      "12.3 Commercial Real Estate": "Commercial Real Estate"
+
+  TECHNOLOGY:
+    default_kpi_pack: TECHNOLOGY__IT_Services_and_Software
+    sub_industries:
+      IT Services and Software: TECHNOLOGY__IT_Services_and_Software
+      "Hardware, Equipment, And Semiconductors": TECHNOLOGY__Hardware_Equipment_and_Semiconductors
+    sub_industry_aliases:
+      "15.1 IT Services and Software": "IT Services and Software"
+      "15.2 Hardware, Equipment, And Semiconductors": "Hardware, Equipment, And Semiconductors"

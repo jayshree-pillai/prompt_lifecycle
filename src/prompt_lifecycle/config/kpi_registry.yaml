@@ -1,0 +1,333 @@
+version: "1.0"
+description: "Canonical KPI definitions (minimal obvious set). KPI packs decide selection per industry/sub-industry."
+
+kpis:
+  # -------------------------
+  # Core (most industries)
+  # -------------------------
+  - id: revenue
+    label: Revenue
+    unit: USD
+    definition: Top-line revenue for the period.
+
+  - id: revenue_growth_yoy
+    label: Revenue growth (YoY)
+    unit: percent
+    definition: Year-over-year revenue growth.
+
+  - id: ebitda_margin
+    label: EBITDA margin
+    unit: percent
+    definition: EBITDA as a percentage of revenue.
+
+  - id: free_cash_flow
+    label: Free cash flow (FCF)
+    unit: USD
+    definition: Cash available after capital expenditures.
+
+  - id: capex
+    label: Capital expenditures (CapEx)
+    unit: USD
+    definition: Cash spent on property/plant/equipment and similar investments.
+
+  - id: net_debt_to_ebitda
+    label: Net debt / EBITDA
+    unit: multiple
+    definition: "Leverage ratio: net debt divided by EBITDA."
+
+  - id: interest_coverage
+    label: Interest coverage
+    unit: multiple
+    definition: Ability to service interest expense from earnings.
+
+  # -------------------------
+  # AUTOS
+  # -------------------------
+  - id: unit_sales
+    label: Unit sales / deliveries
+    unit: count
+    definition: Vehicles/units sold or delivered in the period.
+
+  - id: asp
+    label: Average selling price (ASP)
+    unit: USD
+    definition: Average realized selling price per unit.
+
+  - id: warranty_cost
+    label: Warranty cost / reserve
+    unit: USD
+    definition: Warranty expense or warranty reserve (as disclosed).
+
+  - id: captive_finance_nim
+    label: Net interest margin (Captive Finance)
+    unit: percent
+    definition: Net interest income as a percentage of earning assets (captives).
+
+  - id: captive_finance_charge_off_rate
+    label: Net charge-off rate (Captive Finance)
+    unit: percent
+    definition: Net charge-offs as a percentage of average receivables.
+
+  # -------------------------
+  # BASIC MATERIALS
+  # -------------------------
+  - id: realized_price
+    label: Realized price
+    unit: USD
+    definition: Average realized selling price (per ton/unit as applicable).
+
+  - id: volume
+    label: Volume (produced/shipped)
+    unit: count
+    definition: Output volume (tons/barrels/units) depending on sector.
+
+  - id: cash_cost_per_unit
+    label: Cash cost per unit
+    unit: USD
+    definition: Cash operating cost per ton/unit (as disclosed).
+
+  # -------------------------
+  # CONSUMER
+  # -------------------------
+  - id: same_store_sales
+    label: Same-store sales (SSS)
+    unit: percent
+    definition: Comparable store sales growth.
+
+  - id: traffic_growth
+    label: Traffic growth
+    unit: percent
+    definition: Change in customer visits/transactions.
+
+  - id: average_ticket
+    label: Average ticket
+    unit: USD
+    definition: Average revenue per transaction.
+
+  - id: revpar
+    label: RevPAR
+    unit: USD
+    definition: Revenue per available room (lodging).
+
+  - id: occupancy_rate
+    label: Occupancy rate
+    unit: percent
+    definition: Occupancy (lodging/leisure).
+
+  # -------------------------
+  # ENERGY
+  # -------------------------
+  - id: production_volume
+    label: Production volume
+    unit: count
+    definition: Production output (boe/d or relevant unit).
+
+  - id: lifting_cost_per_unit
+    label: Lifting cost per unit
+    unit: USD
+    definition: Operating cost per produced unit.
+
+  - id: reserve_replacement_ratio
+    label: Reserve replacement ratio
+    unit: percent
+    definition: Reserves added relative to production.
+
+  - id: throughput_volume
+    label: Throughput volume
+    unit: count
+    definition: Pipeline/refining/processing throughput volume.
+
+  - id: utilization_rate
+    label: Utilization rate
+    unit: percent
+    definition: Asset utilization (refinery/plants/networks).
+
+  - id: trading_revenue
+    label: Trading revenue
+    unit: USD
+    definition: Revenue attributable to trading activities (where disclosed).
+
+  - id: var
+    label: Value at Risk (VaR)
+    unit: USD
+    definition: Market risk metric reported by trading firms.
+
+  # -------------------------
+  # FINANCIAL INSTITUTIONS
+  # -------------------------
+  - id: nim
+    label: Net interest margin (NIM)
+    unit: percent
+    definition: Net interest income as a percentage of earning assets.
+
+  - id: cet1_ratio
+    label: CET1 ratio
+    unit: percent
+    definition: Common Equity Tier 1 capital ratio.
+
+  - id: npl_ratio
+    label: Non-performing loans ratio (NPL)
+    unit: percent
+    definition: Non-performing loans as a percentage of total loans.
+
+  - id: loan_loss_reserve_ratio
+    label: Loan loss reserve ratio
+    unit: percent
+    definition: Allowance for credit losses as a percentage of loans/receivables.
+
+  - id: cost_to_income_ratio
+    label: Cost-to-income ratio
+    unit: percent
+    definition: Operating expenses as a percentage of operating income.
+
+  - id: combined_ratio
+    label: Combined ratio
+    unit: percent
+    definition: Claims + expenses as a percentage of premiums (P&C).
+
+  - id: aum
+    label: Assets under management (AUM)
+    unit: USD
+    definition: Total managed assets.
+
+  - id: net_flows
+    label: Net flows
+    unit: USD
+    definition: Net client inflows/outflows.
+
+  - id: adv
+    label: Average daily volume (ADV)
+    unit: count
+    definition: Trading volume metric (exchanges/brokers), if disclosed.
+
+  - id: take_rate
+    label: Take rate
+    unit: percent
+    definition: Revenue per transaction as a percentage of notional/volume (where applicable).
+
+  # -------------------------
+  # HEALTHCARE
+  # -------------------------
+  - id: r_and_d_percent_revenue
+    label: R&D as % of revenue
+    unit: percent
+    definition: Research & development spend as a percentage of revenue.
+
+  - id: pipeline_assets
+    label: Pipeline assets / programs
+    unit: count
+    definition: Count of meaningful pipeline programs (as disclosed).
+
+  - id: payer_mix
+    label: Payor mix
+    unit: percent
+    definition: Revenue mix by payor type (commercial/government/etc.), if relevant.
+
+  - id: procedure_volume
+    label: Procedure / test volume
+    unit: count
+    definition: Volume of procedures or diagnostic tests (as disclosed).
+
+  # -------------------------
+  # INDUSTRIALS & DIVERSIFIED INDUSTRIES
+  # -------------------------
+  - id: backlog
+    label: Backlog
+    unit: USD
+    definition: Contracted work/orders not yet recognized as revenue.
+  - id: book_to_bill
+    label: Book-to-bill
+    unit: multiple
+    definition: Orders received divided by revenue recognized (where used).
+
+  - id: utilization
+    label: Utilization
+    unit: percent
+    definition: Capacity/workforce utilization (services/contracting).
+
+  # -------------------------
+  # MEDIA / TELECOM
+  # -------------------------
+  - id: subscribers
+    label: Subscribers
+    unit: count
+    definition: Subscriber count (wireless/broadband/streaming).
+
+  - id: arpu
+    label: ARPU
+    unit: USD
+    definition: Average revenue per user/subscriber.
+
+  - id: churn
+    label: Churn
+    unit: percent
+    definition: Customer churn rate over the period.
+
+  # -------------------------
+  # POWER & UTILITIES
+  # -------------------------
+  - id: rate_base
+    label: Regulated rate base
+    unit: USD
+    definition: Regulated utility rate base (where applicable).
+
+  - id: generation_capacity_mw
+    label: Generation capacity
+    unit: MW
+    definition: Installed generation capacity in megawatts.
+
+  - id: capacity_factor
+    label: Capacity factor
+    unit: percent
+    definition: Actual output relative to maximum possible output.
+
+  - id: contracted_output_percent
+    label: Contracted / hedged output
+    unit: percent
+    definition: Share of generation/output under contract or hedged.
+
+  # -------------------------
+  # REAL ESTATE
+  # -------------------------
+  - id: occupancy
+    label: Occupancy
+    unit: percent
+    definition: Portfolio occupancy rate.
+
+  - id: noi
+    label: Net operating income (NOI)
+    unit: USD
+    definition: Property-level income after operating expenses.
+
+  - id: ffo
+    label: Funds from operations (FFO)
+    unit: USD
+    definition: REIT cash-flow proxy metric (as reported).
+
+  # -------------------------
+  # TECHNOLOGY
+  # -------------------------
+  - id: arr
+    label: Annual recurring revenue (ARR)
+    unit: USD
+    definition: Recurring revenue run-rate for subscription businesses.
+
+  - id: nrr
+    label: Net revenue retention (NRR)
+    unit: percent
+    definition: Retention including expansion, as reported.
+
+  - id: rpo
+    label: Remaining performance obligations (RPO)
+    unit: USD
+    definition: Contracted future revenue obligations (common SaaS disclosure).
+
+  - id: inventory_days
+    label: Inventory days
+    unit: days
+    definition: Days of inventory on hand (as reported/derived).
+
+  - id: capex_intensity
+    label: CapEx intensity
+    unit: percent
+    definition: CapEx as a percentage of revenue.

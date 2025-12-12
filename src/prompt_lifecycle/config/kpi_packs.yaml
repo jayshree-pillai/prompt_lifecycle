@@ -1,1 +1,235 @@
-# KPI packs per industry
+version: "1.0"
+description: "KPI packs by industry/sub-industry. Packs reference KPI IDs from kpi_registry.yaml."
+
+kpi_packs:
+
+  # =========================================================
+  # 1) AUTOS
+  # =========================================================
+  AUTOS__core:
+    label: "Autos - Core"
+    kpi_ids: [revenue, revenue_growth_yoy, ebitda_margin, free_cash_flow, net_debt_to_ebitda, interest_coverage]
+
+  AUTOS__OEM:
+    label: "Autos - OEM"
+    kpi_ids: [unit_sales, asp, warranty_cost, revenue, ebitda_margin, free_cash_flow, net_debt_to_ebitda]
+
+  AUTOS__Captive_Finance:
+    label: "Autos - Captive Finance"
+    kpi_ids: [captive_finance_nim, captive_finance_charge_off_rate, revenue, interest_coverage]
+
+  AUTOS__Auto_Parts_Suppliers:
+    label: "Autos - Auto Parts/Suppliers"
+    kpi_ids: [unit_sales, asp, warranty_cost, revenue, ebitda_margin, free_cash_flow]
+
+  AUTOS__Auto_Dealers_and_Services:
+    label: "Autos - Auto Dealers & Services"
+    kpi_ids: [unit_sales, revenue, ebitda_margin, free_cash_flow]
+
+  AUTOS__Fleet_Services:
+    label: "Autos - Fleet Services"
+    kpi_ids: [unit_sales, revenue, ebitda_margin, free_cash_flow, net_debt_to_ebitda]
+
+
+  # =========================================================
+  # 2) BASIC MATERIALS
+  # =========================================================
+  BASIC_MATERIALS__core:
+    label: "Basic Materials - Core"
+    kpi_ids: [realized_price, volume, cash_cost_per_unit, revenue, ebitda_margin, free_cash_flow, net_debt_to_ebitda]
+
+  BASIC_MATERIALS__Paper_and_Packaging:
+    label: "Basic Materials - Paper & Packaging"
+    kpi_ids: [realized_price, volume, cash_cost_per_unit, revenue, ebitda_margin, free_cash_flow]
+
+  BASIC_MATERIALS__Metals_and_Mining:
+    label: "Basic Materials - Metals & Mining"
+    kpi_ids: [realized_price, volume, cash_cost_per_unit, revenue, ebitda_margin, free_cash_flow, net_debt_to_ebitda]
+
+  BASIC_MATERIALS__Chemicals:
+    label: "Basic Materials - Chemicals"
+    kpi_ids: [realized_price, volume, cash_cost_per_unit, revenue, ebitda_margin, free_cash_flow]
+
+
+  # =========================================================
+  # 3) CONSUMER
+  # =========================================================
+  CONSUMER__core:
+    label: "Consumer - Core"
+    kpi_ids: [revenue, revenue_growth_yoy, ebitda_margin, free_cash_flow]
+
+  CONSUMER__Food_Beverage_and_Tobacco:
+    label: "Consumer - Food, Beverage & Tobacco"
+    kpi_ids: [revenue, revenue_growth_yoy, ebitda_margin, free_cash_flow, net_debt_to_ebitda]
+
+  CONSUMER__Retail_and_Apparel:
+    label: "Consumer - Retail & Apparel"
+    kpi_ids: [same_store_sales, traffic_growth, average_ticket, revenue, ebitda_margin, free_cash_flow]
+
+  CONSUMER__Consumer_Products:
+    label: "Consumer - Consumer Products"
+    kpi_ids: [revenue, revenue_growth_yoy, ebitda_margin, free_cash_flow]
+
+  CONSUMER__Restaurants_Lodging_and_Leisure:
+    label: "Consumer - Restaurants, Lodging & Leisure"
+    kpi_ids: [same_store_sales, traffic_growth, average_ticket, occupancy_rate, revpar, revenue, ebitda_margin, free_cash_flow]
+
+
+  # =========================================================
+  # 4) ENERGY
+  # =========================================================
+  ENERGY__core:
+    label: "Energy - Core"
+    kpi_ids: [revenue, ebitda_margin, free_cash_flow, net_debt_to_ebitda]
+
+  ENERGY__Upstream_Services:
+    label: "Energy - Upstream/Services"
+    kpi_ids: [production_volume, lifting_cost_per_unit, reserve_replacement_ratio, revenue, ebitda_margin, free_cash_flow, net_debt_to_ebitda]
+
+  ENERGY__Midstream_Downstream:
+    label: "Energy - Midstream/Downstream"
+    kpi_ids: [throughput_volume, utilization_rate, revenue, ebitda_margin, free_cash_flow, net_debt_to_ebitda]
+
+  ENERGY__Commodity_Traders:
+    label: "Energy - Commodity Traders"
+    kpi_ids: [trading_revenue, var, revenue, ebitda_margin]
+
+
+  # =========================================================
+  # 5) FINANCIAL INSTITUTIONS
+  # =========================================================
+  FIN_INST__Insurance:
+    label: "Financial Institutions - Insurance"
+    kpi_ids: [combined_ratio, revenue, free_cash_flow]
+
+  FIN_INST__Banks_and_Depositories:
+    label: "Financial Institutions - Banks/Depositories"
+    kpi_ids: [nim, cet1_ratio, npl_ratio, loan_loss_reserve_ratio, cost_to_income_ratio, revenue]
+
+  FIN_INST__Buy_Side_Firms:
+    label: "Financial Institutions - Buy Side Firms"
+    kpi_ids: [aum, net_flows, revenue, ebitda_margin]
+
+  FIN_INST__Non_Bank_Financials:
+    label: "Financial Institutions - Non-Bank Financials"
+    kpi_ids: [npl_ratio, loan_loss_reserve_ratio, revenue, ebitda_margin, net_debt_to_ebitda]
+
+  FIN_INST__Broker_Dealers:
+    label: "Financial Institutions - Broker Dealers"
+    kpi_ids: [adv, take_rate, revenue, ebitda_margin]
+
+  FIN_INST__CCPs_Exchanges_FinTech:
+    label: "Financial Institutions - CCPs/Exchanges/Fin. Tech."
+    kpi_ids: [adv, take_rate, revenue, ebitda_margin]
+
+
+  # =========================================================
+  # 6) HEALTHCARE
+  # =========================================================
+  HEALTHCARE__core:
+    label: "Healthcare - Core"
+    kpi_ids: [revenue, revenue_growth_yoy, ebitda_margin, free_cash_flow]
+
+  HEALTHCARE__Drug_Manufacturing:
+    label: "Healthcare - Drug Manufacturing"
+    kpi_ids: [r_and_d_percent_revenue, pipeline_assets, revenue, revenue_growth_yoy, ebitda_margin, free_cash_flow]
+
+  HEALTHCARE__Healthcare_Services:
+    label: "Healthcare - Healthcare Services"
+    kpi_ids: [payer_mix, procedure_volume, revenue, ebitda_margin, free_cash_flow]
+
+  HEALTHCARE__Therapeutic_Devices_Medtech:
+    label: "Healthcare - Therapeutic Devices / Medtech"
+    kpi_ids: [procedure_volume, r_and_d_percent_revenue, revenue, ebitda_margin, free_cash_flow]
+
+  HEALTHCARE__Diagnostics_Life_Science_Tools:
+    label: "Healthcare - Diagnostics / Life Science Tools"
+    kpi_ids: [procedure_volume, r_and_d_percent_revenue, revenue, revenue_growth_yoy, ebitda_margin, free_cash_flow]
+
+
+  # =========================================================
+  # 7) INDUSTRIALS & DIVERSIFIED INDUSTRIES
+  # =========================================================
+  IND_DIVERSIFIED__core:
+    label: "Industrials & Diversified - Core"
+    kpi_ids: [revenue, revenue_growth_yoy, ebitda_margin, free_cash_flow, net_debt_to_ebitda]
+
+  IND_DIVERSIFIED__Diversified_Industrials:
+    label: "Industrials & Diversified - Diversified Industrials"
+    kpi_ids: [backlog, revenue, ebitda_margin, free_cash_flow, net_debt_to_ebitda]
+
+  IND_DIVERSIFIED__Aerospace_Defense:
+    label: "Industrials & Diversified - Aerospace/Defense"
+    kpi_ids: [backlog, book_to_bill, revenue, ebitda_margin, free_cash_flow, net_debt_to_ebitda]
+
+  IND_DIVERSIFIED__Engineering_Construction:
+    label: "Industrials & Diversified - Engineering & Construction"
+    kpi_ids: [backlog, utilization, revenue, ebitda_margin, free_cash_flow, net_debt_to_ebitda]
+
+  IND_DIVERSIFIED__Transportation:
+    label: "Industrials & Diversified - Transportation"
+    kpi_ids: [revenue, ebitda_margin, free_cash_flow, net_debt_to_ebitda]
+
+  IND_DIVERSIFIED__Business_Services:
+    label: "Industrials & Diversified - Business Services"
+    kpi_ids: [utilization, revenue, ebitda_margin, free_cash_flow]
+
+  IND_DIVERSIFIED__Machinery_Equipment:
+    label: "Industrials & Diversified - Machinery & Equipment"
+    kpi_ids: [backlog, book_to_bill, revenue, ebitda_margin, free_cash_flow, net_debt_to_ebitda]
+
+
+  # =========================================================
+  # 8) MEDIA / TELECOM
+  # =========================================================
+  MEDIA_TELECOM__Media:
+    label: "Media/Telecom - Media"
+    kpi_ids: [subscribers, arpu, churn, revenue, ebitda_margin]
+
+  MEDIA_TELECOM__Telecom:
+    label: "Media/Telecom - Telecom"
+    kpi_ids: [subscribers, arpu, churn, revenue, ebitda_margin, capex_intensity]
+
+
+  # =========================================================
+  # 9) POWER & UTILITIES
+  # =========================================================
+  POWER_UTIL__Regulated_Utility:
+    label: "Power & Utilities - Regulated Utility"
+    kpi_ids: [rate_base, revenue, ebitda_margin, free_cash_flow, net_debt_to_ebitda]
+
+  POWER_UTIL__Integrated_Hybrid_Utilities:
+    label: "Power & Utilities - Integrated/Hybrid Utilities"
+    kpi_ids: [rate_base, revenue, ebitda_margin, free_cash_flow, net_debt_to_ebitda]
+
+  POWER_UTIL__Independent_Power_Producers:
+    label: "Power & Utilities - Independent Power Producers"
+    kpi_ids: [generation_capacity_mw, capacity_factor, contracted_output_percent, revenue, ebitda_margin, free_cash_flow, net_debt_to_ebitda]
+
+  POWER_UTIL__Renewables:
+    label: "Power & Utilities - Renewables"
+    kpi_ids: [generation_capacity_mw, capacity_factor, contracted_output_percent, revenue, ebitda_margin, free_cash_flow, net_debt_to_ebitda]
+
+
+  # =========================================================
+  # 10) REAL ESTATE
+  # =========================================================
+  REAL_ESTATE__Commercial_Real_Estate:
+    label: "Real Estate - Commercial"
+    kpi_ids: [occupancy, noi, ffo, revenue, net_debt_to_ebitda]
+
+  REAL_ESTATE__Residential_Real_Estate:
+    label: "Real Estate - Residential"
+    kpi_ids: [occupancy, noi, ffo, revenue, net_debt_to_ebitda]
+
+
+  # =========================================================
+  # 11) TECHNOLOGY
+  # =========================================================
+  TECHNOLOGY__IT_Services_and_Software:
+    label: "Technology - IT Services and Software"
+    kpi_ids: [arr, nrr, rpo, revenue, revenue_growth_yoy, ebitda_margin, free_cash_flow]
+
+  TECHNOLOGY__Hardware_Equipment_and_Semiconductors:
+    label: "Technology - Hardware, Equipment, and Semiconductors"
+    kpi_ids: [inventory_days, revenue, revenue_growth_yoy, ebitda_margin, free_cash_flow, capex_intensity]
