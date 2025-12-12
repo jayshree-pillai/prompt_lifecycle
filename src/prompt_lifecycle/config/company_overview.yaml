@@ -11,10 +11,10 @@ base_prompt:
   template_path: "base_system.md"
 
 # Where the Router should find the industry → KPI-pack mapping
-industry_map_file: "src/prompt_lifecycle/config/industry_map.yaml"
+industry_map_file: "industry_map.yaml"
 
 # Where the Router should find the KPI pack definitions
-kpi_packs_file: "src/prompt_lifecycle/config/kpi_packs.yaml"
+kpi_packs_file: "kpi_packs.yaml"
 
 # KPI pack -> prompt snippet template (you decided KISS: keep under prompts/)
 kpi_pack_prompt:
